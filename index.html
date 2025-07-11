@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Chromebookガイド</title>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti/dist/confetti.browser.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #ffffff;
+    }
+
+    /* 로고 이미지 스타일 */
+    .logo-section {
+      margin-bottom: 30px;
+    }
+
+    .logo-icon {
+      font-size: 120px;
+      color: #96ad51;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .logo-icon:hover {
+      color: #2196F3;
+      transform: scale(1.1);
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+    }
+
+    li {
+      margin: 17px 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #96ad51;
+      border: 1px solid #39431d;
+      border-radius: 6px;
+      padding: 10px 20px;
+      display: inline-block;
+      width: 320px;
+      transition: 0.2s;
+    }
+
+    a:hover {
+      background-color: #2196F3;
+      color: white;
+    }
+
+    a.disabled {
+      background-color: #ccc;
+      color: #999;
+      border-color: #bbb;
+      pointer-events: none;
+    }
+
+    .model-info {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-top: 3px;
+    }
+
+    .summary-link {
+      margin-top: 40px;
+      display: inline-block;
+      font-size: 20px;
+    }
+
+    .fixed-top-left {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: #333;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-section">
+    <div class="logo-icon" id="logo-icon">
+      <i class="ri-tools-line"></i>
+    </div>
+    <h1>Chromebook ガイド</h1>
+    <div class="subtitle">ver. 20250701</div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoIcon = document.getElementById('logo-icon');
+      logoIcon.addEventListener('click', function() {
+        // confetti 효과 추가
+        if (window.confetti){
+            confetti({
+                particleCount: 90,
+                spread: 100,
+                origin: {y: 0.4}
+            });
+        }
+        
+        // 로고 애니메이션
+        this.style.transform = 'rotate(360deg) scale(1.3)';
+        setTimeout(() => {
+          this.style.transform = 'scale(1)';
+        }, 500);
+      });
+    });
+  </script>
+
+  <ul id="chromebook-list"></ul>
+
+
+  <script>
+    window.onload = function () {
+      const chromebookList = [
+        { id: "cr1", label: "製品名 : ASUS CR1", file: "cr1.html", info: "型式 : BP-0002, BP-0003", available: true },
+        { id: "c523", label: "ASUS CZ1", file: "cz1.html", info: "CZ1000", available: false },
+        { id: "c434", label: "Dynabook C1", file: "c1.html", info: "SH-W01 ,W02 , SHSH01 / SH-W03 , W04", available: false },
+        { id: "c302", label: "Lenovo 500e", file: "500e.html", info: "BP,VP", available: false },
+        { id: "c425", label: "Lenovo 300e", file: "300e.html", info: "2nd, 3rd", available: false },
+        { id: "c330", label: "ASUS C330", file: "c330.html", info: "BP-0012, BP-0013", available: false },
+        { id: "acer_r13", label: "Acer Chromebook R13", file: "acer-r13.html", info: "BP-0014, BP-0015", available: false },
+        { id: "hp_x360", label: "HP Chromebook x360", file: "hp-x360.html", info: "BP-0016, BP-0017", available: false }
+      ];
+
+      const list = document.getElementById("chromebook-list");
+      chromebookList.forEach(model => {
+        const li = document.createElement("li");
+        const status = model.available ? "" : " (준비 중)";
+        const linkClass = model.available ? "" : "disabled";
+        
+        li.innerHTML = `
+          <a href="${model.file}" class="${linkClass}">
+            <div>${model.label}${status}</div>
+            <div class="model-info">${model.info}</div>
+          </a>
+        `;
+        list.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>

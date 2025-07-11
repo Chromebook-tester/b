@@ -1,0 +1,410 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전역 모바일 우선 설정 */
+html {
+    max-width: 414px;
+    margin: 0 auto;
+    background-color: #333; /* 사이드 여백을 어둡게 */
+}
+
+/* 뷰포트 강제 설정 */
+@viewport {
+    width: 414px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    background-color: #f9f9f9;
+    /* 고정된 헤더 때문에 필요한 바디 패딩 */
+    padding-top: 80px; /* h1의 높이 + 약간의 여백 */
+    /* 모바일 우선 설정 */
+    max-width: 414px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* 상단 타이틀 (h1) 스타일 */
+h1 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 12px 24px;
+    background-color: #DDE7C7;
+    color: #333;
+    border-radius: 0;
+    display: block;
+    width: 414px; /* 모바일 너비로 고정 */
+    max-width: 414px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* 중앙 정렬 */
+    z-index: 1000;
+    cursor: pointer;
+}
+
+/* 타이틀 링크 스타일 */
+.title-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    line-height: 1.2;
+}
+
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    width: 100%; /* body에서 이미 제한했으므로 100% */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 1rem;
+}
+
+.header-content {
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Laptop Section */
+.laptop-section {
+    max-width: 100%; /* 모바일 우선으로 변경 */
+    margin: 0 auto;
+    padding: 1rem; /* 패딩 줄임 */
+}
+
+.laptop-container {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.laptop-image-wrapper {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%; /* 모바일 우선으로 변경 */
+    aspect-ratio: 3/2;
+}
+
+.laptop-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* Hotspot Styles */
+.hotspot {
+    position: absolute;
+    background: rgba(239, 68, 68, 0.7);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.hotspot:hover {
+    background: rgba(239, 68, 68, 0.9);
+    transform: scale(1.05);
+}
+
+.hotspot-label {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    font-size: 0.75rem;
+}
+
+.hotspot:hover .hotspot-label {
+    opacity: 1;
+}
+
+.instruction-text {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.instruction-text p {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Sections Container */
+.sections-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem 3rem;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.section.highlighted {
+    border: 4px solid #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.section-content {
+    padding: 1.5rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-icon {
+    width: 3rem;
+    height: 3rem;
+    background: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.section-icon i {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+/* Section Grid */
+.section-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .section-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .laptop-container {
+        padding: 2rem;
+    }
+}
+
+.section-column h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+/* Steps */
+.steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+}
+
+.step-number.disassemble {
+    background: #ef4444;
+}
+
+.step-number.assemble {
+    background: #10b981;
+}
+
+.step p {
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Warning Box */
+.warning-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #dbeafe;
+    border-radius: 0.5rem;
+}
+
+.warning-box h4 {
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+}
+
+.warning-box p {
+    color: #1e40af;
+    margin: 0;
+}
+
+/* Video Section */
+.video-section {
+    margin-top: 1.5rem;
+}
+
+.video-section h4 {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+}
+
+.video-placeholder {
+    background: #f3f4f6;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+.video-placeholder i {
+    font-size: 2.5rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+}
+
+.video-placeholder p {
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+}
+
+.video-button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-weight: 500;
+}
+
+.video-button:hover {
+    background: #2563eb;
+}
+
+/* Tools Section */
+.tools-section {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem 3rem;
+}
+
+.tools-container {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.tools-container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.tool-item {
+    text-align: center;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+.tool-item i {
+    font-size: 1.875rem;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+}
+
+.tool-item p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin: 0;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
