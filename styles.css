@@ -29,15 +29,6 @@ html {
         transform: none; /* 중앙정렬 해제 */
         grid-template-columns: auto 1fr auto; /* 버튼들이 제대로 표시되도록 */
     }
-    
-    /* 태블릿에서도 버튼 위치 유지 */
-    .header-left-group {
-        transform: translateX(10px) !important;
-    }
-    
-    .header-right-group {
-        transform: translateX(-10px) !important;
-    }
 }
 
 body {
@@ -84,7 +75,7 @@ h1 {
     gap: 5px;
     justify-self: start;
     grid-column: 1;
-    transform: translateX(10px) !important; /* ホーム 버튼을 오른쪽으로 10px 이동 */
+    padding-left: 10px; /* 간단한 패딩으로 위치 조정 */
 }
 
 /* 헤더 오른쪽 버튼 그룹 */
@@ -93,7 +84,7 @@ h1 {
     gap: 5px;
     justify-self: end;
     grid-column: 3;
-    transform: translateX(-10px) !important; /* データ 버튼을 왼쪽으로 10px 이동 */
+    padding-right: 10px; /* 간단한 패딩으로 위치 조정 */
 }
 
 /* 헤더 홈 버튼 */
