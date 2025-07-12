@@ -51,6 +51,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      /* 터치/클릭시 하이라이트 제거 */
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      outline: none;
     }
 
     .logo-icon:hover {
@@ -59,6 +67,13 @@
 
     .logo-icon img {
       transition: all 0.3s ease;
+      /* 이미지 터치/클릭시 하이라이트 제거 */
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     h1 {
