@@ -12,9 +12,22 @@ html {
     background-color: #333; /* 사이드 여백을 어둡게 */
 }
 
-/* 뷰포트 강제 설정 */
-@viewport {
-    width: 414px;
+/* 태블릿 (아이패드 미니 등) */
+@media (min-width: 600px) and (max-width: 1024px) {
+    html {
+        max-width: 100%; /* 화면 전체 사용 */
+        background-color: #f9f9f9; /* 배경도 본문과 같게 */
+    }
+    body {
+        max-width: 100%; /* 화면 전체 사용 */
+        padding-top: 80px; /* 고정 헤더 공간 유지 */
+    }
+    h1 {
+        width: 100%; /* 헤더도 전체 너비 */
+        max-width: 100%;
+        left: 0;
+        transform: none; /* 중앙정렬 해제 */
+    }
 }
 
 body {
