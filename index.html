@@ -18,6 +18,16 @@
       background-color: #333; /* 사이드 여백을 어둡게 */
     }
 
+    /* 태블릿 (아이패드 미니 등) */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      html {
+        max-width: 600px; /* 아이패드에서 더 크게 */
+      }
+      body {
+        max-width: 600px;
+      }
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       text-align: center;
