@@ -75,7 +75,7 @@ h1 {
     gap: 5px;
     justify-self: start;
     grid-column: 1;
-    margin-right: 10px; /* ホーム 버튼을 오른쪽으로 10px 이동 */
+    transform: translateX(10px); /* ホーム 버튼을 오른쪽으로 10px 이동 */
 }
 
 /* 헤더 오른쪽 버튼 그룹 */
@@ -84,7 +84,7 @@ h1 {
     gap: 5px;
     justify-self: end;
     grid-column: 3;
-    margin-left: 10px; /* データ 버튼을 왼쪽으로 10px 이동 */
+    transform: translateX(-10px); /* データ 버튼을 왼쪽으로 10px 이동 */
 }
 
 /* 헤더 홈 버튼 */
