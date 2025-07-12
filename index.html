@@ -7,11 +7,15 @@
   <style>
     /* 전역 모바일 우선 설정 */
     html {
-      background-color: #333; /* 사이드 여백을 어둡게 */
+      background-color: #ffffff; /* 기본 배경을 흰색으로 */
     }
 
-    @media (min-width: 768px) {
+    /* 데스크톰에서만 모바일 레이아웃 시뮬레이션 */
+    @media (min-width: 1024px) {
       html {
+        background-color: #333; /* 사이드 여백을 어둡게 */
+      }
+      body {
         max-width: 414px;
         margin: 0 auto;
       }
@@ -25,12 +29,7 @@
       /* 모바일 우선 설정 */
       margin: 0 auto;
       overflow-x: hidden;
-    }
-
-    @media (min-width: 768px) {
-      body {
-        max-width: 414px;
-      }
+      width: 100%; /* 전체 너비 사용 */
     }
 
     /* 로고 이미지 스타일 */
