@@ -53,7 +53,7 @@ h1 {
     font-size: 20px;
     margin-top: 0;
     margin-bottom: 0;
-    padding: 12px 24px;
+    padding: 10px 20px; /* 패딩을 12px 24px에서 10px 20px로 줄임 */
     background-color: #DDE7C7;
     color: #333;
     border-radius: 0;
@@ -163,14 +163,14 @@ h1 {
 .laptop-section {
     max-width: 100%; /* 모바일 우선으로 변경 */
     margin: 0 auto;
-    padding: 1rem; /* 패딩 줄임 */
+    padding: 0.5rem; /* 패딩을 1rem에서 0.5rem으로 줄임 */
 }
 
 .laptop-container {
     background: white;
     border-radius: 0.75rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 0.5rem; /* 패딩을 1rem에서 0.5rem으로 줄임 */
 }
 
 .laptop-image-wrapper {
@@ -280,7 +280,7 @@ h1 {
 .sections-container {
     max-width: 64rem;
     margin: 0 auto;
-    padding: 0 1rem 3rem;
+    padding: 0 0.5rem 3rem; /* 좌우 패딩을 1rem에서 0.5rem으로 줄임 */
 }
 
 /* Section Styles */
@@ -343,7 +343,7 @@ h1 {
     }
     
     .laptop-container {
-        padding: 2rem;
+        padding: 1rem; /* 태블릿에서도 패딩 줄임 (2rem에서 1rem으로) */
     }
 }
 
