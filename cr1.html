@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ASUS CR1 - 크롬북 분해 & 조립 가이드</title>
+    <title>ガイドあぷり</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         /* 전역 모바일 우선 설정 - index.html과 동일 */
         html {
@@ -55,50 +54,54 @@
             <div class="laptop-container">
                 <div class="laptop-image-wrapper">
                     <!-- Laptop Base Image -->
-                    <img src="https://readdy.ai/api/search-image?query=Modern%20silver%20laptop%20computer%20opened%20at%2090%20degrees%2C%20top-down%20view%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20high%20detail%2C%20realistic%20lighting%2C%20keyboard%20and%20touchpad%20visible%2C%20minimalist%20design%2C%20centered%20composition&width=600&height=400&seq=laptop-main&orientation=landscape" 
-                         alt="노트북 이미지" 
-                         class="laptop-image">
+                    <div class="image-container">
+                        <img src="images/cr1-a.png" alt="CR1" style="width: 80%; height: auto; max-width: 300px;">
+                        
+                        <!-- 정확한 위치의 핫스팟들 - cr1-a 이미지용 -->
+                        <!-- 카메라 ➀ 글자 위치 (이미지 상단 중앙 약간 왼쪽) -->
+                        <a href="#section-lcd" class="simple-hotspot" style="top: 5%; left: 42%; width: 16%; height: 6%;" title="カメラ ➀"></a>
+                        
+                        <!-- LCD 스크린 영역 (화면 전체 영역) -->
+                        <a href="#section-lcd" class="simple-hotspot" style="top: 12%; left: 25%; width: 50%; height: 30%;" title="LCD スクリーン"></a>
+                        
+                        <!-- 키보드 영역 (키보드 전체) -->
+                        <a href="#section-keyboard" class="simple-hotspot" style="top: 45%; left: 25%; width: 50%; height: 25%;" title="キーボード"></a>
+                        
+                        <!-- 터치패드 영역 (키보드 아래 중앙) -->
+                        <a href="#section-touchpad" class="simple-hotspot" style="top: 72%; left: 42%; width: 16%; height: 12%;" title="タッチパッド"></a>
+                    </div>
                     
-                    <!-- Interactive Hotspots -->
-                    <button class="hotspot" id="hotspot-keyboard" 
-                            style="top: 45%; left: 15%; width: 70%; height: 25%;"
-                            onclick="scrollToSection('keyboard')">
-                        <span class="hotspot-label">키보드</span>
-                    </button>
+                    <br>
                     
-                    <button class="hotspot" id="hotspot-touchpad" 
-                            style="top: 72%; left: 35%; width: 30%; height: 15%;"
-                            onclick="scrollToSection('touchpad')">
-                        <span class="hotspot-label">터치패드</span>
-                    </button>
-                    
-                    <button class="hotspot" id="hotspot-lcd" 
-                            style="top: 5%; left: 15%; width: 70%; height: 35%;"
-                            onclick="scrollToSection('lcd')">
-                        <span class="hotspot-label">LCD 스크린</span>
-                    </button>
-                    
-                    <button class="hotspot" id="hotspot-battery" 
-                            style="top: 85%; left: 20%; width: 60%; height: 10%;"
-                            onclick="scrollToSection('battery')">
-                        <span class="hotspot-label">배터리</span>
-                    </button>
-                    
-                    <button class="hotspot" id="hotspot-memory" 
-                            style="top: 25%; left: 75%; width: 20%; height: 15%;"
-                            onclick="scrollToSection('memory')">
-                        <span class="hotspot-label">메모리 (RAM)</span>
-                    </button>
-                    
-                    <button class="hotspot" id="hotspot-storage" 
-                            style="top: 55%; left: 75%; width: 20%; height: 15%;"
-                            onclick="scrollToSection('storage')">
-                        <span class="hotspot-label">저장장치 (SSD/HDD)</span>
-                    </button>
+                    <div class="image-container">
+                        <img src="images/cr1-b.png" alt="CR1" style="width: 80%; height: auto; max-width: 300px;">
+                        
+                        <!-- 정확한 위치의 핫스팟들 - cr1-b 이미지용 -->
+                        <!-- 배터리 영역 (하단 메인 보드 부분) -->
+                        <a href="#section-battery" class="simple-hotspot" style="top: 15%; left: 15%; width: 70%; height: 30%;" title="バッテリー"></a>
+                        
+                        <!-- 메모리 (RAM) 영역 (우측 상단) -->
+                        <a href="#section-memory" class="simple-hotspot" style="top: 50%; left: 65%; width: 30%; height: 20%;" title="メモリ (RAM)"></a>
+                        
+                        <!-- 저장장치 영역 (우측 하단) -->
+                        <a href="#section-storage" class="simple-hotspot" style="top: 75%; left: 55%; width: 40%; height: 20%;" title="ストレージ (SSD/HDD)"></a>
+                    </div>
+                </div>
+                
+                <!-- 부품 설명 링크 -->
+                <div class="parts-links">
+                    <div class="parts-grid">
+                        <a href="#section-keyboard" class="part-link">キーボード</a>
+                        <a href="#section-touchpad" class="part-link">タッチパッド</a>
+                        <a href="#section-lcd" class="part-link">LCD スクリーン</a>
+                        <a href="#section-battery" class="part-link">バッテリー</a>
+                        <a href="#section-memory" class="part-link">メモリ (RAM)</a>
+                        <a href="#section-storage" class="part-link">ストレージ (SSD/HDD)</a>
+                    </div>
                 </div>
                 
                 <div class="instruction-text">
-                    <p>💡 노트북의 각 부분을 클릭하면 상세 가이드로 이동합니다</p>
+                    <p>💡 각 부품명을 클릭하면 상세 가이드로 이동합니다</p>
                 </div>
             </div>
         </div>
