@@ -10,6 +10,8 @@ html {
     max-width: 414px;
     margin: 0 auto;
     background-color: #333; /* 사이드 여백을 어둡게 */
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* 고정 헤더 높이 + 여백 */
 }
 
 /* 태블릿 (아이패드 미니 등) */
@@ -17,6 +19,7 @@ html {
     html {
         max-width: 100%; /* 화면 전체 사용 */
         background-color: #f9f9f9; /* 배경도 본문과 같게 */
+        scroll-padding-top: 80px; /* 태블릿에서도 스크롤 오프셋 유지 */
     }
     body {
         max-width: 100%; /* 화면 전체 사용 */
@@ -227,7 +230,7 @@ h1 {
 
 .parts-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr; /* 한 줄에 하나씩 배열 */
     gap: 0.75rem;
     max-width: 400px;
     margin: 0 auto;
@@ -235,13 +238,14 @@ h1 {
 
 @media (min-width: 768px) {
     .parts-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr; /* 태블릿에서도 한 줄에 하나씩 */
     }
 }
 
+/* 그리드(부품 리스트) 색깔 */
 .part-link {
     display: block;
-    background: #f3f4f6;
+    background:#96ad51;
     color: #374151;
     text-decoration: none;
     padding: 0.75rem 1rem;
@@ -291,6 +295,7 @@ h1 {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
+    scroll-margin-top: 80px; /* 고정 헤더 높이 + 여백 만큼 오프셋 */
 }
 
 .section.highlighted {
