@@ -66,33 +66,42 @@
         <div class="sections-container">
             <!-- LCD 패널 섹션 -->
             <div class="section" id="section-lcd">
-                <div class="section-content">
+                <div class="section-header-wrapper">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="ri-tools-line"></i>
                         </div>
                         <h2>LCD パネル</h2>
                     </div>
-                    
-                    <!-- YouTube 비디오 -->
-                    <div class="video-container" style="position: relative; width: 98%; max-width: 100%; height: 0; padding-bottom: 133.33%; margin: 0 auto 1rem auto;">
-                        <iframe 
-                            src="https://www.youtube.com/embed/nyOM4Iy1m4k?start=3&si=DnRHIVok8cbYdcIK" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 12px;"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    
-                    <style>
-                    @media (min-width: 481px) {
-                        .video-container {
-                            width: 80% !important;
-                            max-width: 450px !important;
-                        }
+                </div>
+                
+                <!-- YouTube 비디오 - 섹션 패딩 밖에 위치 -->
+                <div class="video-container" style="position: relative; width: 100%; max-width: 100%; height: 0; padding-bottom: 133.33%; margin: 0;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/nyOM4Iy1m4k?start=3&si=DnRHIVok8cbYdcIK" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 0;"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <style>
+                .section-header-wrapper {
+                    padding: 1.5rem 1.5rem 0 1.5rem;
+                }
+                @media (min-width: 481px) {
+                    .video-container {
+                        width: 80% !important;
+                        max-width: 450px !important;
+                        margin: 0 auto !important;
+                        padding-bottom: 100% !important;
                     }
-                    </style>
-                    
-                    <div class="section-grid">
+                    .video-container iframe {
+                        border-radius: 12px !important;
+                    }
+                }
+                </style>
+                
+                <div class="section-content">
                         <div class="section-column">
                             <div class="steps">
                                 <div class="step">
