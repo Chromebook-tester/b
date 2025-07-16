@@ -312,7 +312,10 @@
             currentScale = 1;
             currentX = 0;
             currentY = 0;
-            updateImageTransform();
+            
+            // transition을 완전히 제거
+            modalImage.style.transition = 'none';
+            modalImage.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
             
             // 모바일에서 핀치줌을 위해 body scroll만 제한
             document.body.style.position = 'fixed';
@@ -334,13 +337,9 @@
 
         function updateImageTransform() {
             const modalImage = document.getElementById('modalImage');
-            // transform을 즉시 적용 (transition 없이)
+            // transition을 완전히 제거하고 즉시 적용
             modalImage.style.transition = 'none';
             modalImage.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
-            // 다음 프레임에서 transition 복원 (더블탭 애니메이션용)
-            requestAnimationFrame(() => {
-                modalImage.style.transition = 'transform 0.3s ease-out';
-            });
         }
 
         function getDistance(touches) {
@@ -433,35 +432,6 @@
             if (event.key === 'Escape') {
                 closeModal();
             }
-        });
-
-        // Double tap to reset zoom and position
-        let lastTap = 0;
-        modalImage.addEventListener('touchend', function(event) {
-            const currentTime = new Date().getTime();
-            const tapLength = currentTime - lastTap;
-            if (tapLength < 300 && tapLength > 0 && event.touches.length === 0 && !isDragging) {
-                // 더블탭으로만 줌과 위치 리셋 (아이폰처럼)
-                const modalImage = document.getElementById('modalImage');
-                modalImage.style.transition = 'transform 0.3s ease-out'; // 더블탭시만 애니메이션
-                
-                if (currentScale !== 1 || currentX !== 0 || currentY !== 0) {
-                    // 확대되어 있거나 이동되어 있으면 리셋
-                    currentScale = 1;
-                    currentX = 0;
-                    currentY = 0;
-                } else {
-                    // 기본 상태면 2배 확대
-                    currentScale = 2;
-                }
-                modalImage.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
-                
-                // 애니메이션 후 transition 제거
-                setTimeout(() => {
-                    modalImage.style.transition = 'none';
-                }, 300);
-            }
-            lastTap = currentTime;
         });
 
         // Prevent modal from closing when clicking on the image
