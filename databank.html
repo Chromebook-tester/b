@@ -161,21 +161,32 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 95%;
-            max-height: 95%;
-            /* 핀치줌을 위한 설정 */
-            touch-action: pinch-zoom;
-            overflow: visible;
+            width: 100vw;
+            height: 100vh;
+            /* 핀치줌과 드래그를 위한 설정 */
+            touch-action: manipulation;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content img {
-            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
             height: auto;
             border-radius: 8px;
-            /* 핀치줌을 위한 설정 */
-            touch-action: pinch-zoom;
+            /* 핀치줌과 드래그를 위한 설정 */
+            touch-action: manipulation;
             user-select: none;
             -webkit-user-select: none;
+            cursor: grab;
+            transition: transform 0.1s ease-out;
+        }
+
+        .modal-content img:active {
+            cursor: grabbing;
         }
 
         .close {
@@ -281,12 +292,27 @@
     </div>
 
     <script>
+        let currentScale = 1;
+        let currentX = 0;
+        let currentY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let initialDistance = 0;
+        let initialScale = 1;
+
         function openModal(imageSrc) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
             
             modalImage.src = imageSrc;
             modal.style.display = 'block';
+            
+            // 초기값 리셋
+            currentScale = 1;
+            currentX = 0;
+            currentY = 0;
+            updateImageTransform();
             
             // 모바일에서 핀치줌을 위해 body scroll만 제한
             document.body.style.position = 'fixed';
@@ -306,6 +332,92 @@
             window.scrollTo(0, parseInt(scrollY || '0') * -1);
         }
 
+        function updateImageTransform() {
+            const modalImage = document.getElementById('modalImage');
+            modalImage.style.transform = `translate(${currentX}px, ${currentY}px) scale(${currentScale})`;
+        }
+
+        function getDistance(touches) {
+            const dx = touches[0].clientX - touches[1].clientX;
+            const dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        function getCenter(touches) {
+            return {
+                x: (touches[0].clientX + touches[1].clientX) / 2,
+                y: (touches[0].clientY + touches[1].clientY) / 2
+            };
+        }
+
+        // Touch events for pan and zoom
+        const modalImage = document.getElementById('modalImage');
+
+        modalImage.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            
+            if (e.touches.length === 1) {
+                // 한손가락 드래그 시작
+                isDragging = true;
+                startX = e.touches[0].clientX - currentX;
+                startY = e.touches[0].clientY - currentY;
+            } else if (e.touches.length === 2) {
+                // 두손가락 핀치줌 시작
+                isDragging = false;
+                initialDistance = getDistance(e.touches);
+                initialScale = currentScale;
+            }
+        });
+
+        modalImage.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            
+            if (e.touches.length === 1 && isDragging) {
+                // 한손가락 드래그
+                currentX = e.touches[0].clientX - startX;
+                currentY = e.touches[0].clientY - startY;
+                updateImageTransform();
+            } else if (e.touches.length === 2) {
+                // 두손가락 핀치줌
+                const currentDistance = getDistance(e.touches);
+                const scale = (currentDistance / initialDistance) * initialScale;
+                currentScale = Math.max(0.5, Math.min(5, scale)); // 0.5x ~ 5x 제한
+                updateImageTransform();
+            }
+        });
+
+        modalImage.addEventListener('touchend', function(e) {
+            isDragging = false;
+        });
+
+        // Mouse events for desktop
+        modalImage.addEventListener('mousedown', function(e) {
+            e.preventDefault();
+            isDragging = true;
+            startX = e.clientX - currentX;
+            startY = e.clientY - currentY;
+        });
+
+        modalImage.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                currentX = e.clientX - startX;
+                currentY = e.clientY - startY;
+                updateImageTransform();
+            }
+        });
+
+        modalImage.addEventListener('mouseup', function(e) {
+            isDragging = false;
+        });
+
+        // Wheel zoom for desktop
+        modalImage.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? 0.9 : 1.1;
+            currentScale = Math.max(0.5, Math.min(5, currentScale * delta));
+            updateImageTransform();
+        });
+
         // Close modal when pressing Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
@@ -313,21 +425,24 @@
             }
         });
 
-        // Prevent modal from closing when clicking on the image
-        document.getElementById('modalImage').addEventListener('click', function(event) {
-            event.stopPropagation();
-        });
-        
-        // 더블탭으로 줌 허용
+        // Double tap to reset zoom
         let lastTap = 0;
-        document.getElementById('modalImage').addEventListener('touchend', function(event) {
+        modalImage.addEventListener('touchend', function(event) {
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
-            if (tapLength < 500 && tapLength > 0) {
-                event.preventDefault();
-                // 더블탭 시 줌 동작은 브라우저 기본 동작에 맡김
+            if (tapLength < 500 && tapLength > 0 && event.touches.length === 0) {
+                // 더블탭으로 줌 리셋
+                currentScale = 1;
+                currentX = 0;
+                currentY = 0;
+                updateImageTransform();
             }
             lastTap = currentTime;
+        });
+
+        // Prevent modal from closing when clicking on the image
+        modalImage.addEventListener('click', function(event) {
+            event.stopPropagation();
         });
     </script>
 </body>
