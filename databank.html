@@ -365,7 +365,7 @@
                 // 두손가락 핀치줌 시작
                 isDragging = false;
                 initialDistance = getDistance(e.touches);
-                initialScale = currentScale;
+                initialScale = currentScale; // 현재 스케일을 기준으로 시작
             }
         });
 
@@ -381,13 +381,17 @@
                 // 두손가락 핀치줌
                 const currentDistance = getDistance(e.touches);
                 const scale = (currentDistance / initialDistance) * initialScale;
-                currentScale = Math.max(0.5, Math.min(5, scale)); // 0.5x ~ 5x 제한
+                currentScale = Math.max(0.3, Math.min(8, scale)); // 0.3x ~ 8x 제한으로 확장
                 updateImageTransform();
             }
         });
 
         modalImage.addEventListener('touchend', function(e) {
-            isDragging = false;
+            if (e.touches.length === 0) {
+                // 모든 손가락을 뗐을 때만 드래그 종료
+                isDragging = false;
+            }
+            // 줌 상태는 유지 - 자동 리셋하지 않음
         });
 
         // Mouse events for desktop
@@ -414,7 +418,7 @@
         modalImage.addEventListener('wheel', function(e) {
             e.preventDefault();
             const delta = e.deltaY > 0 ? 0.9 : 1.1;
-            currentScale = Math.max(0.5, Math.min(5, currentScale * delta));
+            currentScale = Math.max(0.3, Math.min(8, currentScale * delta)); // 데스크톱도 동일한 범위
             updateImageTransform();
         });
 
@@ -425,16 +429,22 @@
             }
         });
 
-        // Double tap to reset zoom
+        // Double tap to reset zoom and position
         let lastTap = 0;
         modalImage.addEventListener('touchend', function(event) {
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
-            if (tapLength < 500 && tapLength > 0 && event.touches.length === 0) {
-                // 더블탭으로 줌 리셋
-                currentScale = 1;
-                currentX = 0;
-                currentY = 0;
+            if (tapLength < 300 && tapLength > 0 && event.touches.length === 0) {
+                // 더블탭으로만 줌과 위치 리셋 (아이폰처럼)
+                if (currentScale !== 1 || currentX !== 0 || currentY !== 0) {
+                    // 확대되어 있거나 이동되어 있으면 리셋
+                    currentScale = 1;
+                    currentX = 0;
+                    currentY = 0;
+                } else {
+                    // 기본 상태면 2배 확대
+                    currentScale = 2;
+                }
                 updateImageTransform();
             }
             lastTap = currentTime;
