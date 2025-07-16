@@ -282,16 +282,16 @@ h1 {
 
 /* Sections Container */
 .sections-container {
-    max-width: 64rem;
-    margin: 0 auto;
-    padding: 0 0.5rem 3rem; /* 좌우 패딩을 1rem에서 0.5rem으로 줄임 */
+    max-width: 100%; /* 64rem에서 100%로 변경 */
+    margin: 0;
+    padding: 0 0 3rem; /* 좌우 패딩 완전 제거 */
 }
 
 /* Section Styles */
 .section {
     margin-bottom: 2rem;
     background: white;
-    border-radius: 0.75rem;
+    border-radius: 0; /* 가로폭 꽉 채우기 위해 border-radius 제거 */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
@@ -540,5 +540,30 @@ html {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Video Container Styles */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 133.33%; /* 세로 비디오 비율 (4:3) */
+    margin: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* 데스크톱에서는 정사각형에 가깝게 */
+@media (min-width: 481px) {
+    .video-container {
+        padding-bottom: 100% !important;
+    }
 }
 
