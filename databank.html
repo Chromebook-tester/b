@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ガイドあぷり</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データバンク - ガイドあぷり</title>
     <style>
         /* 전역 모바일 우선 설정 */
         html {
@@ -161,14 +161,21 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 95%;
+            max-height: 95%;
+            /* 핀치줌을 위한 설정 */
+            touch-action: pinch-zoom;
+            overflow: visible;
         }
 
         .modal-content img {
             width: 100%;
             height: auto;
             border-radius: 8px;
+            /* 핀치줌을 위한 설정 */
+            touch-action: pinch-zoom;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .close {
@@ -281,16 +288,22 @@
             modalImage.src = imageSrc;
             modal.style.display = 'block';
             
-            // Prevent body scroll when modal is open
-            document.body.style.overflow = 'hidden';
+            // 모바일에서 핀치줌을 위해 body scroll만 제한
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${window.scrollY}px`;
+            document.body.style.width = '100%';
         }
 
         function closeModal() {
             const modal = document.getElementById('imageModal');
             modal.style.display = 'none';
             
-            // Restore body scroll
-            document.body.style.overflow = 'auto';
+            // Restore body scroll and position
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
         }
 
         // Close modal when pressing Escape key
@@ -303,6 +316,18 @@
         // Prevent modal from closing when clicking on the image
         document.getElementById('modalImage').addEventListener('click', function(event) {
             event.stopPropagation();
+        });
+        
+        // 더블탭으로 줌 허용
+        let lastTap = 0;
+        document.getElementById('modalImage').addEventListener('touchend', function(event) {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 500 && tapLength > 0) {
+                event.preventDefault();
+                // 더블탭 시 줌 동작은 브라우저 기본 동작에 맡김
+            }
+            lastTap = currentTime;
         });
     </script>
 </body>
