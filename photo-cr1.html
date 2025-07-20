@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>データバンク - ガイドあぷり</title>
+    <title>CR1写真</title>
     <style>
         /* 전역 모바일 우선 설정 */
         html {
@@ -28,6 +28,7 @@
                 max-width: 100%;
                 left: 0;
                 transform: none;
+                grid-template-columns: auto 1fr auto;
             }
         }
 
@@ -43,7 +44,7 @@
             color: #333;
             text-align: center;
             background-color: #f9f9f9;
-            padding-top: 80px;
+            padding-top: 60px;
             max-width: 414px;
             margin: 0 auto;
             overflow-x: hidden;
@@ -51,42 +52,80 @@
 
         /* Header */
         h1 {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            font-size: 20px;
+            margin: 0;
+            padding: 10px 20px;
+            background-color: #DDE7C7;
+            color: #333;
+            border-radius: 0;
+            width: 414px;
+            max-width: 414px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100%;
-            max-width: 414px;
-            background-color: rgba(249, 249, 249, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            border-bottom: 1px solid #ddd;
             z-index: 1000;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 10px;
+            cursor: pointer;
         }
 
+        /* Header Button Groups */
+        .header-left-group {
+            display: flex;
+            gap: 5px;
+            justify-self: start;
+            grid-column: 1;
+            padding-left: 10px;
+        }
+
+        .header-right-group {
+            display: flex;
+            gap: 5px;
+            justify-self: end;
+            grid-column: 3;
+            padding-right: 10px;
+        }
+
+        /* Header Home Button */
         .header-home-btn {
-            padding: 8px 16px;
-            background-color: #96ad51;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
+            background-color: #DDE7C7;
+            color: rgb(0, 0, 0);
+            border: 2px solid #8eb938;
+            border-radius: 16px;
+            cursor: pointer;
+            padding: 0 14px;
             font-size: 14px;
+            height: 32px;
+            min-width: 26px;
+            line-height: 16px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: background-color 0.2s;
+            z-index: 10;
+            text-decoration: none;
+            margin: 0;
         }
 
         .header-home-btn:hover {
-            background-color: #7a8f42;
+            background-color: #2196F3;
+            border: 2px solid white;
         }
 
         .title-link {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
+            justify-self: center;
+            grid-column: 2;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            line-height: 1.2;
         }
 
         /* Container */
@@ -241,9 +280,13 @@
 <body>
     <!-- Header -->
     <h1>
-        <a href="index.html" class="header-home-btn">ホーム</a>
-        <span class="title-link">データバンク</span>
-        <div></div>
+        <div class="header-left-group">
+            <a href="index.html" class="header-home-btn">ホーム</a>
+        </div>
+        <a href="#top" class="title-link">ASUS CR1</a>
+        <div class="header-right-group">
+            <a href="cr1.html" class="header-home-btn">戻る</a>
+        </div>
     </h1>
 
     <div class="container">
@@ -255,7 +298,7 @@
     
         <!-- Photo Gallery -->
         <div class="gallery-section">
-            <h2>写真ライブラリ</h2>
+            <h2>CR1 写真データ</h2>
             <div class="photo-grid">
                 <!-- 사진들 -->
                 <div class="photo-item" onclick="openModal('images/data/cr1-lcd.jpg')">
