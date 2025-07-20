@@ -131,6 +131,9 @@
             height: 150px;
             object-fit: cover;
             transition: transform 0.2s;
+            /* 썸네일 품질 개선 */
+            image-rendering: auto;
+            image-rendering: -webkit-optimize-contrast;
         }
 
         .photo-item:hover img {
@@ -169,6 +172,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            /* 고해상도 디스플레이 최적화 */
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
         }
 
         .modal-content img {
@@ -182,6 +190,12 @@
             user-select: none;
             -webkit-user-select: none;
             cursor: grab;
+            /* 고해상도 렌더링 개선 */
+            image-rendering: auto;
+            image-rendering: -webkit-optimize-contrast;
+            /* 안티앨리어싱 강화 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             /* transition 제거 - 줌 상태 유지를 위해 */
         }
 
