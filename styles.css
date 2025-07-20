@@ -1,37 +1,18 @@
-/* Reset and Base Styles */
+/* ==============================================
+   RESET AND BASE STYLES
+   ============================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 전역 모바일 우선 설정 */
 html {
     max-width: 414px;
     margin: 0 auto;
-    background-color: #333; /* 사이드 여백을 어둡게 */
+    background-color: #333;
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* 고정 헤더 높이 + 여백 */
-}
-
-/* 태블릿 (아이패드 미니 등) */
-@media (min-width: 600px) and (max-width: 1024px) {
-    html {
-        max-width: 100%; /* 화면 전체 사용 */
-        background-color: #f9f9f9; /* 배경도 본문과 같게 */
-        scroll-padding-top: 80px; /* 태블릿에서도 스크롤 오프셋 유지 */
-    }
-    body {
-        max-width: 100%; /* 화면 전체 사용 */
-        padding-top: 60px; /* 고정 헤더 공간 최적화 */
-    }
-    h1 {
-        width: 100%; /* 헤더도 전체 너비 */
-        max-width: 100%;
-        left: 0;
-        transform: none; /* 중앙정렬 해제 */
-        grid-template-columns: auto 1fr auto; /* 버튼들이 제대로 표시되도록 */
-    }
+    scroll-padding-top: 80px;
 }
 
 body {
@@ -40,67 +21,87 @@ body {
     color: #333;
     text-align: center;
     background-color: #f9f9f9;
-    /* 고정된 헤더 때문에 필요한 바디 패딩 */
-    padding-top: 60px; /* h1의 높이 + 최소 여백 */
-    /* 모바일 우선 설정 */
+    padding-top: 60px;
     max-width: 414px;
     margin: 0 auto;
     overflow-x: hidden;
 }
 
-/* 상단 타이틀 (h1) 스타일 */
+/* ==============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================== */
+@media (min-width: 600px) and (max-width: 1024px) {
+    html {
+        max-width: 100%;
+        background-color: #f9f9f9;
+        scroll-padding-top: 80px;
+    }
+    body {
+        max-width: 100%;
+        padding-top: 60px;
+    }
+    h1 {
+        width: 100%;
+        max-width: 100%;
+        left: 0;
+        transform: none;
+        grid-template-columns: auto 1fr auto;
+    }
+}
+
+/* ==============================================
+   HEADER STYLES
+   ============================================== */
 h1 {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 10px 20px; /* 패딩을 12px 24px에서 10px 20px로 줄임 */
+    margin: 0;
+    padding: 10px 20px;
     background-color: #DDE7C7;
     color: #333;
     border-radius: 0;
-    width: 414px; /* 모바일 너비로 고정 */
+    width: 414px;
     max-width: 414px;
     box-sizing: border-box;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
     left: 50%;
-    transform: translateX(-50%); /* 중앙 정렬 */
+    transform: translateX(-50%);
     z-index: 1000;
     cursor: pointer;
 }
 
-/* 헤더 왼쪽 버튼 그룹 */
+/* Header Button Groups */
 .header-left-group {
     display: flex;
     gap: 5px;
     justify-self: start;
     grid-column: 1;
-    padding-left: 10px; /* 간단한 패딩으로 위치 조정 */
+    padding-left: 10px;
 }
 
-/* 헤더 오른쪽 버튼 그룹 */
 .header-right-group {
     display: flex;
     gap: 5px;
     justify-self: end;
     grid-column: 3;
-    padding-right: 10px; /* 간단한 패딩으로 위치 조정 */
+    padding-right: 10px;
 }
 
-/* 헤더 홈 버튼 */
+/* Header Home Button */
 .header-home-btn {
     background-color: #DDE7C7;
     color: rgb(0, 0, 0);
     border: 2px solid #8eb938;
     border-radius: 16px;
     cursor: pointer;
-    padding: 0 14px; /* 18px의 80% = 14.4px ≈ 14px */
-    font-size: 14px; /* 18px의 80% = 14.4px ≈ 14px */
-    height: 32px; /* 40px의 80% = 32px */
-    min-width: 26px; /* 32px의 80% = 25.6px ≈ 26px */
+    padding: 0 14px;
+    font-size: 14px;
+    height: 32px;
+    min-width: 26px;
     line-height: 16px;
     box-sizing: border-box;
     display: flex;
@@ -117,7 +118,7 @@ h1 {
     border: 2px solid white;
 }
 
-/* 타이틀 링크 스타일 */
+/* Title Link */
 .title-link {
     justify-self: center;
     grid-column: 2;
@@ -129,138 +130,45 @@ h1 {
     line-height: 1.2;
 }
 
+/* ==============================================
+   LAYOUT CONTAINERS
+   ============================================== */
 .container {
     min-height: 100vh;
     background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
-    width: 100%; /* body에서 이미 제한했으므로 100% */
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* Header Styles */
-.header {
-    background: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem 1rem;
-}
-
-.header-content {
-    max-width: 64rem;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.header h1 {
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-}
-
-.header p {
-    color: #6b7280;
-    font-size: 1rem;
-}
-
-/* Laptop Section */
+/* ==============================================
+   LAPTOP SECTION
+   ============================================== */
 .laptop-section {
-    max-width: 100%; /* 모바일 우선으로 변경 */
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0.5rem; /* 패딩을 1rem에서 0.5rem으로 줄임 */
+    padding: 0.5rem;
 }
 
 .laptop-container {
     background: white;
     border-radius: 0.75rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem; /* 패딩을 1rem에서 0.5rem으로 줄임 */
+    padding: 0.5rem;
 }
 
 .laptop-image-wrapper {
     position: relative;
     margin: 0 auto;
     width: 100%;
-    max-width: 100%; /* 모바일 우선으로 변경 */
+    max-width: 100%;
     text-align: center;
 }
 
-/* 이미지 컨테이너 */
 .image-container {
     position: relative;
     display: inline-block;
     margin-bottom: 10px;
-}
-
-/* 간단한 핫스팟 스타일 */
-.simple-hotspot {
-    position: absolute;
-    background: rgba(59, 130, 246, 0.1); /* 거의 투명한 파란색 */
-    border: 1px solid rgba(59, 130, 246, 0.3);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-}
-
-.simple-hotspot:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.6);
-}
-
-/* 호버시 툴팁 표시 */
-.simple-hotspot:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 100;
-}
-
-/* 부품 링크 스타일 */
-.parts-links {
-    margin: 1.5rem 0;
-}
-
-.parts-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* 한 줄에 하나씩 배열 */
-    gap: 0.75rem;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-    .parts-grid {
-        grid-template-columns: 1fr; /* 태블릿에서도 한 줄에 하나씩 */
-    }
-}
-
-/* 그리드(부품 리스트) 색깔 */
-.part-link {
-    display: block;
-    background:#b3ce61;
-    color: #374151;
-    text-decoration: none;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    font-weight: 500;
-    border: 2px solid transparent;
-    transition: all 0.2s ease;
-}
-
-.part-link:hover {
-    background: #3b82f6;
-    color: white;
-    border-color: #2563eb;
-    transform: translateY(-2px);
 }
 
 .laptop-image {
@@ -280,22 +188,91 @@ h1 {
     font-size: 1rem;
 }
 
-/* Sections Container */
-.sections-container {
-    max-width: 100%; /* 64rem에서 100%로 변경 */
-    margin: 0;
-    padding: 0 0 3rem; /* 좌우 패딩 완전 제거 */
+/* ==============================================
+   HOTSPOTS AND TOOLTIPS
+   ============================================== */
+.simple-hotspot {
+    position: absolute;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
 }
 
-/* Section Styles */
+.simple-hotspot:hover {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+.simple-hotspot:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+/* ==============================================
+   PARTS NAVIGATION
+   ============================================== */
+.parts-links {
+    margin: 1.5rem 0;
+}
+
+.parts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.part-link {
+    display: block;
+    background: #b3ce61;
+    color: #374151;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.part-link:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* ==============================================
+   SECTIONS AND CONTENT
+   ============================================== */
+.sections-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 0 3rem;
+}
+
 .section {
     margin-bottom: 4rem;
     background: white;
-    border-radius: 0; /* 가로폭 꽉 채우기 위해 border-radius 제거 */
+    border-radius: 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: all 0.3s ease;
-    scroll-margin-top: 80px; /* 고정 헤더 높이 + 여백 만큼 오프셋 */
+    scroll-margin-top: 80px;
 }
 
 .section.highlighted {
@@ -322,6 +299,14 @@ h1 {
     text-align: center;
 }
 
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    text-align: center;
+    width: 100%;
+}
+
 /* Warning Section */
 .warning-section {
     background-color: #fef3c7;
@@ -338,142 +323,31 @@ h1 {
     margin: 0;
 }
 
-.section-header h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #1f2937;
-    text-align: center;
+/* ==============================================
+   VIDEO CONTAINERS
+   ============================================== */
+.video-container {
+    position: relative;
     width: 100%;
-}
-
-/* Section Grid */
-.section-grid {
-    display: grid;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .section-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .laptop-container {
-        padding: 1rem; /* 태블릿에서도 패딩 줄임 (2rem에서 1rem으로) */
-    }
-}
-
-.section-column h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 0.75rem;
-}
-
-/* Steps */
-.steps {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.step {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-}
-
-.step-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 50%;
-    color: white;
-    font-size: 0.75rem;
-    font-weight: bold;
-    flex-shrink: 0;
-    margin-top: 0.125rem;
-}
-
-.step-number.disassemble {
-    background: #ef4444;
-}
-
-.step-number.assemble {
-    background: #10b981;
-}
-
-.step p {
-    color: #6b7280;
+    height: 0;
+    padding-bottom: 133.33%;
     margin: 0;
 }
 
-/* Warning Box */
-.warning-box {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: #dbeafe;
-    border-radius: 0.5rem;
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.warning-box h4 {
-    font-weight: 600;
-    color: #1e40af;
-    margin-bottom: 0.5rem;
-}
-
-.warning-box p {
-    color: #1e40af;
-    margin: 0;
-}
-
-/* Video Section */
-.video-section {
-    margin-top: 1.5rem;
-}
-
-.video-section h4 {
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 0.75rem;
-}
-
-.video-placeholder {
-    background: #f3f4f6;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    text-align: center;
-}
-
-.video-placeholder i {
-    font-size: 2.5rem;
-    color: #9ca3af;
-    margin-bottom: 0.5rem;
-}
-
-.video-placeholder p {
-    color: #6b7280;
-    margin-bottom: 0.75rem;
-}
-
-.video-button {
-    background: #3b82f6;
-    color: white;
-    border: none;
-    padding: 0.5rem 1.5rem;
-    border-radius: 9999px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    font-weight: 500;
-}
-
-.video-button:hover {
-    background: #2563eb;
-}
-
-/* Tools Section */
+/* ==============================================
+   TOOLS SECTION
+   ============================================== */
 .tools-section {
     max-width: 64rem;
     margin: 0 auto;
@@ -501,12 +375,6 @@ h1 {
     gap: 1rem;
 }
 
-@media (min-width: 768px) {
-    .tools-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
 .tool-item {
     text-align: center;
     padding: 1rem;
@@ -527,30 +395,21 @@ h1 {
     margin: 0;
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
+/* ==============================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================== */
+@media (min-width: 768px) {
+    .parts-grid {
+        grid-template-columns: 1fr;
+    }
+    .laptop-container {
+        padding: 1rem;
+    }
+    .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-/* Video Container Styles */
-.video-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 133.33%; /* 세로 비디오 비율 (4:3) */
-    margin: 0;
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-/* 데스크톱에서는 정사각형에 가깝게 */
 @media (min-width: 481px) {
     .video-container {
         padding-bottom: 100% !important;
