@@ -345,9 +345,14 @@
                     <img src="images/cr1-site.png" alt="CR1 Official Site">
                     <div class="photo-caption">CR1 広告サイト</div>
                 </div>
+
+                <!-- 공식 비디오 이동 항목 -->
+                <div class="photo-item" onclick="openOfficialVideo()">
+                    <img src="images/cr1-video.png" alt="CR1 Official Video">
+                    <div class="photo-caption">CR1 CMビデオ(1分)</div>
+                </div>
             </div>
         </div>
-
 
     </div>
 
@@ -526,6 +531,13 @@
             // CR1 공식 사이트 URL (실제 URL로 변경 필요)
             const officialSiteUrl = 'https://www.asus.com/jp/laptops/for-students/chromebook/asus-chromebook-flip-cr1-cr1100/'; 
             window.open(officialSiteUrl, '_blank');
+        }
+
+        // 공식 비디오(YouTube) 이동 함수
+        function openOfficialVideo() {
+            // CR1 공식 CM 비디오 YouTube URL
+            const videoUrl = 'https://youtu.be/FAhy9HH-JKE?si=Ps85uQZGIv1GNGgs';
+            window.open(videoUrl, '_blank');
         }
     </script>
 </body>
