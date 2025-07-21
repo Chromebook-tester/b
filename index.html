@@ -236,12 +236,13 @@
           console.log('Ikupi audio play failed:', error);
         });
         
-        // confetti 효과 추가
+      
+          //confetti 효과 추가
         if (window.confetti){
           confetti({
-            particleCount: 150,
-            spread: 120,
-            origin: {y: 0.9}  // 더 아래쪽에서 시작 (0.5 → 0.7로 변경)
+            particleCount: 50,
+            spread: 100,
+            origin: {y: 0.7}  // 더 아래쪽에서 시작 (0.5 → 0.9로 변경)
           });
         }
       });
