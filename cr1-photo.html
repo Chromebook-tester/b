@@ -161,27 +161,16 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
-        }
-
-        .photo-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
 
         .photo-item img {
             width: 100%;
             height: 150px;
             object-fit: cover;
-            transition: transform 0.2s;
             /* 썸네일 품질 개선 */
             image-rendering: auto;
             image-rendering: -webkit-optimize-contrast;
-        }
-
-        .photo-item:hover img {
-            transform: scale(1.05);
         }
 
         .photo-caption {
@@ -306,45 +295,51 @@
     
         <!-- Photo Gallery -->
         <div class="gallery-section">
-            <h2>CR1 写真データ</h2>
+            <h2>CR1 写真といろいろ😺</h2>
             <div class="photo-grid">
                 <!-- 사진들 -->
                 <div class="photo-item" onclick="openModal('images/data/cr1-lcd.jpg')">
                     <img src="images/data/cr1-lcd.jpg" alt="CR1 LCD">
-                    <div class="photo-caption">CR1 LCDパネル</div>
+                    <div class="photo-caption">CR1 LCDパネル 写真</div>
                 </div>
                 
                 <div class="photo-item" onclick="openModal('images/data/cr1-connector.jpg')">
                     <img src="images/data/cr1-connector.jpg" alt="CR1 Connector">
-                    <div class="photo-caption">CR1 コネクタ</div>
+                    <div class="photo-caption">CR1 コネクタ 写真</div>
                 </div>
                 
                 <div class="photo-item" onclick="openModal('images/data/cr1-sub.jpg')">
                     <img src="images/data/cr1-sub.jpg" alt="CR1 Sub">
-                    <div class="photo-caption">CR1 サブボード</div>
+                    <div class="photo-caption">CR1 サブボード 写真</div>
                 </div>
                 
                 <div class="photo-item" onclick="openModal('images/data/cr1-a.jpg')">
                     <img src="images/data/cr1-a.jpg" alt="CR1 Component A">
-                    <div class="photo-caption">CR1本体</div>
+                    <div class="photo-caption">CR1本体 写真</div>
                 </div>
                 
                 <div class="photo-item" onclick="openModal('images/data/cr1-antena.jpg')">
                     <img src="images/data/cr1-antena.jpg" alt="CR1 Antenna">
-                    <div class="photo-caption">CR1 アンテナ線</div>
+                    <div class="photo-caption">CR1 アンテナ線 写真</div>
                 </div>
                 
                 <div class="photo-item" onclick="openModal('images/data/cr1-mb.jpg')">
                     <img src="images/data/cr1-mb.jpg" alt="CR1 Motherboard">
-                    <div class="photo-caption">CR1 システムボード</div>
+                    <div class="photo-caption">CR1 システムボード 写真</div>
                 </div>
                 
                 <!-- PDF 다운로드 항목 -->
-                <div class="photo-item" onclick="downloadPDF()">
+                <div class="photo-item" onclick="downloadManualPDF()">
                     <img src="images/cr1-manual.png" alt="CR1 Manual">
                     <div class="photo-caption">CR1 取扱説明書 PDF</div>
                 </div>
-                
+
+                 <!-- PDF 다운로드 항목 -->
+                <div class="photo-item" onclick="downloadServicePDF()">
+                    <img src="images/cr1-service1.png" alt="CR1 Manual">
+                    <div class="photo-caption">CR1 修理マニュアル PDF </div>
+                </div>
+
                 <!-- 공식 사이트 이동 항목 -->
                 <div class="photo-item" onclick="openOfficialSite()">
                     <img src="images/cr1-site.png" alt="CR1 Official Site">
@@ -512,17 +507,29 @@
             event.stopPropagation();
         });
 
-        // PDF 다운로드 함수
-        function downloadPDF() {
-            // PDF 파일 경로를 설정하세요 (실제 PDF 파일 경로로 변경 필요)
-            const pdfUrl = 'images/data/cr1-manual.pdf'; // 실제 PDF 파일 경로
+        // PDF 다운로드 함수들
+        function downloadManualPDF() {
+            // 취급설명서 PDF 파일 경로
+            const pdfUrl = 'images/data/cr1-manual.pdf';
             const link = document.createElement('a');
             link.href = pdfUrl;
-            link.download = 'CR1-トリセツ.pdf';
+            link.download = 'CR1-取扱説明書.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
+
+        function downloadServicePDF() {
+            // 수리 매뉴얼 PDF 파일 경로
+            const pdfUrl = 'images/data/cr1-service.pdf';
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'CR1-修理マニュアル.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
 
         // 공식 사이트 이동 함수
         function openOfficialSite() {
