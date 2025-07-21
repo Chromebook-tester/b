@@ -132,6 +132,10 @@
         /* Container */
         .container {
             padding: 20px;
+            min-height: 100vh;
+            background: #dbeafe;
+            width: 100%;
+            margin: 0;
         }
 
         /* Photo Gallery */
@@ -153,7 +157,7 @@
         }
 
         .photo-item {
-            background: #dbeafe;
+            background: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -260,7 +264,7 @@
 
         /* Info section */
         .info-section {
-            background: #dbeafe;
+            background: white;
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
@@ -298,13 +302,7 @@
     </h1>
 
     <div class="container">
-         <!--Info Section -->
-        <a href="cr1.html" class="info-section-link">
-            <div class="info-section">
-                <h3>他の資料はこちら</h3>
-                <p>PDF、トリセツ、公式サイト</p>
-            </div>
-        </a>
+ 
     
         <!-- Photo Gallery -->
         <div class="gallery-section">
@@ -340,10 +338,22 @@
                     <img src="images/data/cr1-mb.jpg" alt="CR1 Motherboard">
                     <div class="photo-caption">CR1 システムボード</div>
                 </div>
+                
+                <!-- PDF 다운로드 항목 -->
+                <div class="photo-item" onclick="downloadPDF()">
+                    <img src="images/cr1-manual.png" alt="CR1 Manual">
+                    <div class="photo-caption">CR1 取扱説明書 PDF</div>
+                </div>
+                
+                <!-- 공식 사이트 이동 항목 -->
+                <div class="photo-item" onclick="openOfficialSite()">
+                    <img src="images/cr1-site.png" alt="CR1 Official Site">
+                    <div class="photo-caption">CR1 広告サイト</div>
+                </div>
             </div>
         </div>
 
- 
+
     </div>
 
     <!-- Modal for enlarged images -->
@@ -501,6 +511,25 @@
         modalImage.addEventListener('click', function(event) {
             event.stopPropagation();
         });
+
+        // PDF 다운로드 함수
+        function downloadPDF() {
+            // PDF 파일 경로를 설정하세요 (실제 PDF 파일 경로로 변경 필요)
+            const pdfUrl = 'images/data/cr1-manual.pdf'; // 실제 PDF 파일 경로
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'CR1-トリセツ.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // 공식 사이트 이동 함수
+        function openOfficialSite() {
+            // CR1 공식 사이트 URL (실제 URL로 변경 필요)
+            const officialSiteUrl = 'https://www.asus.com/jp/laptops/for-students/chromebook/asus-chromebook-flip-cr1-cr1100/'; 
+            window.open(officialSiteUrl, '_blank');
+        }
     </script>
 </body>
 </html>
