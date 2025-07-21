@@ -135,7 +135,7 @@ h1 {
    ============================================== */
 .container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    background: white;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -151,7 +151,7 @@ h1 {
 }
 
 .laptop-container {
-    background: white;
+    background: #dbeafe;
     border-radius: 0.75rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     padding: 0.5rem;
@@ -267,7 +267,7 @@ h1 {
 
 .section {
     margin-bottom: 4rem;
-    background: white;
+    background: #dbeafe;
     border-radius: 0;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -355,7 +355,7 @@ h1 {
 }
 
 .tools-container {
-    background: white;
+    background: #dbeafe;
     border-radius: 0.75rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
