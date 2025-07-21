@@ -151,11 +151,24 @@
     <div class="logo-icon" id="logo-icon">
       <img src="images/guide-title3.png" alt="Chromebook Guide Logo" style="width: 80%; height: auto; max-width: 300px;">
     </div>
+    
+    <!-- 숨겨진 오디오 요소 -->
+    <audio id="moriguchi-audio" preload="auto">
+      <source src="images/data/moriguchi.mp3" type="audio/mpeg">
+    </audio>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const logoIcon = document.getElementById('logo-icon');
+      const audio = document.getElementById('moriguchi-audio');
+      
       logoIcon.addEventListener('click', function() {
+        // 오디오 재생
+        audio.currentTime = 0; // 처음부터 재생
+        audio.play().catch(function(error) {
+          console.log('Audio play failed:', error);
+        });
+        
         // confetti 효과 추가
         if (window.confetti){
             confetti({
