@@ -187,17 +187,87 @@
     });
   </script>
 
-  <ul id="chromebook-list"></ul>
+  <ul>
+    <li>
+      <a href="cr1.html">
+        <div>製品名 : ASUS CR1</div>
+        <div class="model-info">型式 : BP-0002, BP-0003</div>
+      </a>
+    </li>
+    <li>
+      <a href="cz1.html" class="disabled">
+        <div>ASUS CZ1</div>
+        <div class="model-info">CZ1000</div>
+      </a>
+    </li>
+    <li>
+      <a href="c1.html" class="disabled">
+        <div>Dynabook C1</div>
+        <div class="model-info">SH-W01 ,W02 / SH-W03 , W04</div>
+      </a>
+    </li>
+    <li>
+      <a href="500e.html" class="disabled">
+        <div>Lenovo 500e</div>
+        <div class="model-info">BP,VP</div>
+      </a>
+    </li>
+    <li>
+      <a href="300e.html" class="disabled">
+        <div>Lenovo 300e</div>
+        <div class="model-info">2nd, 3rd</div>
+      </a>
+    </li>
+    <li>
+      <a href="ikupi.html" id="ikupi-link">
+        <div>ホリさんは<br>ビジネス開発部の<br>エンジンです🚀</div>
+        <div class="model-info"></div>
+      </a>
+    </li>
+  </ul>
 
+  <!-- ikupi 오디오 요소 -->
+  <audio id="ikupi-audio" preload="auto">
+    <source src="images/data/ikupiegao.mp3" type="audio/mpeg">
+  </audio>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ikupi 링크 클릭시 오디오 재생
+      const ikupiLink = document.getElementById('ikupi-link');
+      const ikupiAudio = document.getElementById('ikupi-audio');
+      
+      ikupiLink.addEventListener('click', function(e) {
+        e.preventDefault(); // 링크 이동 방지
+        
+        // 오디오 재생
+        ikupiAudio.currentTime = 0; // 처음부터 재생
+        ikupiAudio.play().catch(function(error) {
+          console.log('Ikupi audio play failed:', error);
+        });
+        
+        // confetti 효과 추가
+        if (window.confetti){
+          confetti({
+            particleCount: 150,
+            spread: 120,
+            origin: {y: 0.9}  // 더 아래쪽에서 시작 (0.5 → 0.7로 변경)
+          });
+        }
+      });
+    });
+  </script>
+
+  <!-- JavaScript 코드 (나중에 공부하기 위해 주석처리) -->
+  <!--
   <script>
     window.onload = function () {
       const chromebookList = [
         { id: "cr1", label: "製品名 : ASUS CR1", file: "cr1.html", info: "型式 : BP-0002, BP-0003", available: true },
-        { id: "c523", label: "ASUS CZ1", file: "cz1.html", info: "CZ1000", available: false },
-        { id: "c434", label: "Dynabook C1", file: "c1.html", info: "SH-W01 ,W02 / SH-W03 , W04", available: false },
-        { id: "c302", label: "Lenovo 500e", file: "500e.html", info: "BP,VP", available: false },
-        { id: "c425", label: "Lenovo 300e", file: "300e.html", info: "2nd, 3rd", available: false },
+        { id: "cz1", label: "ASUS CZ1", file: "cz1.html", info: "CZ1000", available: false },
+        { id: "c1", label: "Dynabook C1", file: "c1.html", info: "SH-W01 ,W02 / SH-W03 , W04", available: false },
+        { id: "500e", label: "Lenovo 500e", file: "500e.html", info: "BP,VP", available: false },
+        { id: "300e", label: "Lenovo 300e", file: "300e.html", info: "2nd, 3rd", available: false },
         { id: "c330", label: "NEC C330", file: "c330.html", info: "BP-0012, BP-0013", available: false },
       ];
 
@@ -217,6 +287,12 @@
       });
     }
   </script>
+  -->
+  
+  <!-- 설명: 위의 JavaScript 코드는 chromebookList 배열을 자동으로 HTML로 변환하는 코드입니다.
+       forEach 반복문으로 각 모델의 정보를 읽어서 li 요소를 만들고, 
+       available 속성에 따라 클래스와 상태를 자동으로 설정했습니다.
+       지금은 간단한 HTML로 변경했지만, 나중에 공부할 때 참고하세요. -->
 
 </body>
 </html>
