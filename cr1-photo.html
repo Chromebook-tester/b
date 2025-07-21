@@ -509,25 +509,15 @@
 
         // PDF 다운로드 함수들
         function downloadManualPDF() {
-            // 취급설명서 PDF 파일 경로
+            // 스마트폰에서는 새 탭에서 PDF 열기
             const pdfUrl = 'images/data/cr1-manual.pdf';
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'CR1-取扱説明書.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            window.open(pdfUrl, '_blank');
         }
 
         function downloadServicePDF() {
-            // 수리 매뉴얼 PDF 파일 경로
+            // 스마트폰에서는 새 탭에서 PDF 열기
             const pdfUrl = 'images/data/cr1-service.pdf';
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'CR1-修理マニュアル.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            window.open(pdfUrl, '_blank');
         }
 
 
